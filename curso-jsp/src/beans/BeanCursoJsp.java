@@ -3,16 +3,7 @@ package beans;
 public class BeanCursoJsp {
 	private String login;
 	private String senha;
-	
-	public boolean validarLoginSenha(String login, String senha) {
-		if(login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
+		
 	public String getLogin() {
 		return login;
 	}

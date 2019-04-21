@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Seja bem-vindo ao Curso de JSP</h1>
+	<a href="cadastroUsuario.jsp">Cadastro de Usuários</a>
 </body>
 </html>
