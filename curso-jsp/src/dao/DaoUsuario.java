@@ -54,4 +54,21 @@ public class DaoUsuario {
 		}
 		return list;
 	}
+	
+	public void deletarUsuario(String login) {
+		String sql = "DELETE FROM usuario WHERE login = '" + login + "'";
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.execute();
+			connection.commit();
+		} catch (SQLException e) {
+			try {
+				e.printStackTrace();
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+	}
 }

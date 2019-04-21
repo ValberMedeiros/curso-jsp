@@ -23,21 +23,39 @@ public class UsuarioJava extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try {
+			response.getWriter().append("Served at: ").append(request.getContextPath());
+			
+			String acao = request.getParameter("acao");
+			String user = request.getParameter("user");
+			
+			if(acao.equalsIgnoreCase("deletarUsuario")) {
+				daoUsuario.deletarUsuario(user);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listarUsuario());
+				dispatcher.forward(request, response);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String login = request.getParameter("login");
-		
-		String senha = request.getParameter("password");
-		
-		BeanCursoJsp usuario = new BeanCursoJsp();
-		usuario.setLogin(login);
-		usuario.setSenha(senha);
-		
-		daoUsuario.cadastrarUsuario(usuario);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/cadastroUsuario.jsp");
-		request.setAttribute("usuarios", daoUsuario.listarUsuario());
-		dispatcher.forward(request, response);
+		try {
+			String login = request.getParameter("login");
+			
+			String senha = request.getParameter("password");
+			
+			BeanCursoJsp usuario = new BeanCursoJsp();
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			
+			daoUsuario.cadastrarUsuario(usuario);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/cadastroUsuario.jsp");
+			request.setAttribute("usuarios", daoUsuario.listarUsuario());
+			dispatcher.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
