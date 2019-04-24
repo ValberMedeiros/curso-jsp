@@ -13,10 +13,18 @@
 		<table>
 			<tr>
 				<td>
+					Codigo:
+				</td>
+				<td>
+					<input type="text" name="id" id="id" value="${user.id}">
+				</td>
+			</tr>
+			<tr>
+				<td>
 					Login:
 				</td>
 				<td>
-					<input type="text" name="login" id="login">
+					<input type="text" name="login" id="login" value="${user.login}">
 				</td>
 			</tr>
 			
@@ -25,7 +33,7 @@
 					Senha:
 				</td>
 				<td>
-					<input type="password" name="password" id="password">
+					<input type="password" name="password" id="password" value="${user.senha}">
 				</td>
 			</tr>
 			
@@ -50,13 +58,19 @@
 		<c:forEach items="${usuarios }" var="user">
 			<tr>
 				<td>
+					<c:out value="${user.id}"></c:out>
+				</td>
+				<td>
 					<c:out value="${user.login}"></c:out>
 				</td>
 				<td>
 					<c:out value="${user.senha}"></c:out>
 				</td>
 				<td>
-					<a href="salvarUsuario?acao=deletarUsuario&user=${user.login}">Excluir</a>
+					<a href="salvarUsuario?acao=deletarUsuario&user=${user.id}">Excluir</a>
+				</td>
+				<td>
+					<a href="salvarUsuario?acao=editarUsuario&user=${user.id}">Editar</a>
 				</td>
 			</tr>
 		</c:forEach>

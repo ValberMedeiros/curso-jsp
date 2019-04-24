@@ -34,6 +34,11 @@ public class UsuarioJava extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listarUsuario());
 				dispatcher.forward(request, response);
+			}else if(acao.equalsIgnoreCase("editarUsuario")) {
+				BeanCursoJsp beanCursoJsp = daoUsuario.consultarUsuario(user);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("user", beanCursoJsp);
+				dispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,15 +47,20 @@ public class UsuarioJava extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String login = request.getParameter("login");
-			
+			String id = request.getParameter("id");
+			String login = request.getParameter("login");			
 			String senha = request.getParameter("password");
 			
 			BeanCursoJsp usuario = new BeanCursoJsp();
+			usuario.setId(!id.isEmpty()? Long.parseLong(id) : 0);
 			usuario.setLogin(login);
 			usuario.setSenha(senha);
 			
-			daoUsuario.cadastrarUsuario(usuario);
+			if(id == null || id.isEmpty()) {
+				daoUsuario.cadastrarUsuario(usuario);
+			}else {
+				daoUsuario.editarUsuario(usuario);
+			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/cadastroUsuario.jsp");
 			request.setAttribute("usuarios", daoUsuario.listarUsuario());
 			dispatcher.forward(request, response);

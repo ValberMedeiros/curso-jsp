@@ -15,9 +15,11 @@
 		Login:
 		<input type="text" id="login" name="login">
 		<br>
+		<br/>
 		Senha:
 		<input type="password" id="login" name="senha">
 		<br>
+		<br/>
 		<input type="submit" value="enviar">
 	</form>
 </body>
