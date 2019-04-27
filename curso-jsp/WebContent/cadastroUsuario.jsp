@@ -54,10 +54,19 @@
 			
 			<tr>
 				<td>
+					Nome:
+				</td>
+				<td>
+					<input type="text" name="nome" id="nome" value="${user.nome}" class="cor-diferente">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
 					Senha:
 				</td>
 				<td>
-					<input type="password" name="password" id="password" value="${user.senha}" class="cor-diferente">
+					<input type="password" name="password" id="password" value="${user.senha}">
 				</td>
 			</tr>
 			
@@ -74,9 +83,9 @@
 							<tr class="table100-head">
 								<th class="column1">Código</th>
 								<th class="column2">Usuário</th>
-								<th class="column3">Senha</th>
-								<th class="column4">Opção</th>
+								<th class="column3">Nome</th>
 								<th class="column5">Opção</th>
+								<th class="column6">Opção</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -89,12 +98,12 @@
 									<c:out value="${user.login}"></c:out>
 								</td>
 								<td class="column3">
-									<c:out value="${user.senha}"></c:out>
-								</td>
-								<td class="column4">
-									<a href="salvarUsuario?acao=deletarUsuario&user=${user.id}">Excluir</a>
+									<c:out value="${user.nome}"></c:out>
 								</td>
 								<td class="column5">
+									<a href="salvarUsuario?acao=deletarUsuario&user=${user.id}">Excluir</a>
+								</td>
+								<td class="column6">
 									<a href="salvarUsuario?acao=editarUsuario&user=${user.id}">Editar</a>
 								</td>
 							</tr>
