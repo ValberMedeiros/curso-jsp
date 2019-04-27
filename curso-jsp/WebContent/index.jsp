@@ -73,7 +73,7 @@
 						<span class="focus-input100"></span>
 					</div>
 					<div class="container-login100-form-btn m-t-17">
-						<button type="submit" value="enviar" class="login100-form-btn">Logar</button>
+						<button type="submit" value="enviar" class="login100-form-btn">Login</button>
 					</div>
 					<div class="w-full text-center p-t-55">
 						<span class="txt2">
